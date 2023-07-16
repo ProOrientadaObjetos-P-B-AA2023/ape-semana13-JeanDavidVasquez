@@ -5,12 +5,10 @@
  */
 package p3;
 
-import p1.MatriculaCampamento;
-import p1.MatriculaColegio;
-import p1.MatriculaEscuela;
-import p1.MatriculaJardin;
-import p1.MatriculaMaternal;
+import p1.*;
 import p2.TipoMatricula;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -18,22 +16,19 @@ import p2.TipoMatricula;
  */
 public class Principal {
     public static void main(String[] args) {
-        TipoMatricula tipos = new TipoMatricula();
-        
-        MatriculaCampamento mcamp = new MatriculaCampamento();
-        mcamp.establecerTarifa();
-        
-        MatriculaColegio mcolegio = new MatriculaColegio();
-        mcolegio.establecerTarifa();
-        
-        MatriculaEscuela mescuela = new MatriculaEscuela();
-        MatriculaJardin mjardin = new MatriculaJardin();
-        MatriculaMaternal mmaternal = new MatriculaMaternal();
-        MatriculaMaternal mmaternal2 = new MatriculaMaternal();
-        
-        tipos.establecerMatriculaCampamento(mcamp);
-        tipos.establecerMatriculaColegio(mcolegio);
-        tipos.establecerPromedioTarifas();
-        System.out.printf("%s\n", tipos);
+        ArrayList<Matricula> matriculas= new ArrayList<>();
+        matriculas.add(new MatriculaCampamento(500,400,300));
+        matriculas.add(new MatriculaColegio(30,93,71,63));
+        matriculas.add( new MatriculaEscuela(13,5,5,5));
+        matriculas.add (new MatriculaJardin(73,93,65));
+        matriculas.add(new MatriculaMaternal(57,72,90));
+        matriculas.add(new MatriculaMaternal(21,44,64));
+        for (Matricula matricula: matriculas){
+            matricula.establecerTarifa();
+        }
+        TipoMatricula tipos= new TipoMatricula(matriculas);
+        for (Matricula matricula: matriculas)
+            System.out.println(matricula);
+        System.out.printf("Promedio Tarifas: %s\n", tipos.establecerPromedioTarifas());
     }
 }

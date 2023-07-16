@@ -9,15 +9,27 @@ package p1;
  *
  * @author reroes
  */
-public class MatriculaCampamento {
-    private double tarifa;
-    
-    public void establecerTarifa(){
-        // tarifa = costo transporte + costo comida + costo instructores
-        tarifa = 100.2 + 30.2 + 90.2;
+public class MatriculaCampamento extends Matricula{
+    private double cosTrans;
+    private double cosComi;
+    private double cosInstruc;
+
+    public MatriculaCampamento(double cosTrans, double cosComi, double cosInstruc) {
+        this.cosTrans = cosTrans;
+        this.cosComi = cosComi;
+        this.cosInstruc = cosInstruc;
     }
-        
-    public double obtenerTarifa(){
-        return tarifa;
+
+    public double getTarifa(){
+        return (cosTrans + cosComi + cosInstruc);
+    }
+
+    @Override
+    public String toString() {
+        return "MatriculaCampamento{" +
+                "cosTrans=" + cosTrans +
+                ", cosComi=" + cosComi +
+                ", cosInstruc=" + cosInstruc +
+                '}';
     }
 }

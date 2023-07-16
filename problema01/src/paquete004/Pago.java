@@ -1,2 +1,13 @@
-package paquete004;public class Pago {
+package paquete004;
+
+public abstract class Pago {
+    double pago;
+    public abstract void calcularPago();
+
+    @Override
+    public String toString() {
+        return "Pago{" +
+                "pago=" + pago +
+                '}';
+    }
 }
